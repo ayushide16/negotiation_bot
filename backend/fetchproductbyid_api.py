@@ -30,23 +30,21 @@ def get_db_connection():
 @app.route('/data/<int:product_id>', methods=['GET'])
 def get_product(product_id=None):
     try:
+        if product_id is None:
+            # Return an error if no product_id is provided
+            return jsonify({"error": "Product ID is required"}), 400
+
         conn = get_db_connection()
         cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM products WHERE product_id = %s", (product_id,))
+        row = cursor.fetchone()
         
-        if product_id is not None:
-            cursor.execute("SELECT * FROM products WHERE product_id = %s", (product_id,))
-            row = cursor.fetchone()
-            
-            if row is None:
-                return jsonify({"error": "Product not found"}), 404
-            
-            data = dict(zip([column[0] for column in cursor.description], row))
-        
-        else:
-            cursor.execute("SELECT * FROM products")
-            rows = cursor.fetchall()
-            data = [dict(zip([column[0] for column in cursor.description], row)) for row in rows]
-        
+        if row is None:
+            return jsonify({"error": "Product not found"}), 404
+
+        data = dict(zip([column[0] for column in cursor.description], row))
+
         cursor.close()
         conn.close()
         
