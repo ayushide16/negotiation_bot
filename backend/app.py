@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 # PostgreSQL configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Helloworld@123@localhost:5432/RetailDB'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Helloworld%40123@localhost:5432/RetailDB'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize the database with the app
@@ -39,3 +39,4 @@ def add_to_cart():
 
 if __name__ == '__main__':
     app.run(debug=True)
+

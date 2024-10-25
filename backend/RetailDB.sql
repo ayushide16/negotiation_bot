@@ -2,12 +2,17 @@
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(100) NOT NULL UNIQUE,
-    email VARCHAR(255) NOT NULL UNIQUE,
+    email email TYPE TEXT NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     phone VARCHAR(15),
     address TEXT,
     customer_type VARCHAR(20) DEFAULT 'new'  -- 'new' or 'returning'
 );
+
+
+INSERT INTO users (username, email, password, phone, address, customer_type)
+VALUES ('john_doe', 'john.doe@example.com', 'abcd', '092838923', '123 Example St', 'new');
+
 
 CREATE TABLE products (
     product_id SERIAL PRIMARY KEY,
