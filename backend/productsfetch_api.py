@@ -1,15 +1,17 @@
 from flask import Flask, jsonify
 import psycopg2
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # PostgreSQL Database Configuration
 DB_HOST = os.getenv('DB_HOST', 'localhost')
 DB_PORT = os.getenv('DB_PORT', '5432')
-DB_NAME = os.getenv('DB_NAME', 'RetailDB')
+DB_NAME = os.getenv('DB_NAME', 'aiJugaadu')
 DB_USER = os.getenv('DB_USER', 'postgres')
-DB_PASS = os.getenv('DB_PASS', 'Helloworld@123')
+DB_PASS = os.getenv('DB_PASS', 'postgres')
 
 # Establish database connection
 def get_db_connection():
@@ -50,4 +52,4 @@ def get_products():
         return jsonify({"error": f"An unexpected error occurred: {str(e)}"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port=5001,debug=True) 
