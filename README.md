@@ -13,10 +13,13 @@ The Negotiation Bot is designed to provide interactive negotiation for products,
 ### Instructions on how OnDemand APIs are utilized in your project
 We have not used any OnDemand APIs in this project due to the project requirements. Instead, we implemented custom APIs to fully control the negotiation logic and streamline data flow between the frontend, backend, and database.
 
-### Team member names and roles
--Ayushi Dey - Backend development and API integration
--Vinay Rana - Frontend development using React
--Sumit Singh - Machine learning model integration and negotiation logic
--Arya Ambica - Database design and management
+### Team member names and roles:
+-Sumit Singh: Development of scripts to facilitate negotiation strategies with LLM<br>
+-Vinay Rana: Development of React Framework to facilitate functionalities of the e-commerce web application<br>
+-Arya Ambica: Integration of PostgreSQL and Python to facilitate data retrieval and processing<br>
+-Ayushi Dey: Development of endpoints for data communication
+
+
+
 
 
